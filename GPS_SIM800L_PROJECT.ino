@@ -44,8 +44,8 @@ void setup() {
     delay(4000);
   }
 
-  h = lng_val;
-  t = lat_val;
+  lng = lng_val;
+  lat = lat_val;
   Send_DHT_Data();
   delay(1000);
 
@@ -61,9 +61,9 @@ void Send_DHT_Data()
   Serial.println("Sending Data...");     //Displays on the serial monitor
   sim800l.print("AT+CMGF=1\r");          // Set the shield to SMS mode
   delay(100);
-  sim800l.print("AT+CMGS=\"+916290107993\"\r");  //Your phone number don't forget to include your country code example +91xxxxxxxxx"
+  sim800l.print("AT+CMGS=\"+91**********\"\r");  //Your phone number don't forget to include your country code example +91xxxxxxxxx"
   delay(500);
-  Data_SMS = "Lat = " + String(t, 6) + "\nLng =" + String(h, 6) + "\nhttps://maps.google.com/?q=" + String(t, 6) + "," + String(h, 6) + " HELP"; //A string to regroup the whole message as it's composed of Strings and Float --> to a single string,
+  Data_SMS = "Lat = " + String(lat, 6) + "\nLng =" + String(lng, 6) + "\nhttps://maps.google.com/?q=" + String(t, 6) + "," + String(h, 6) + " HELP"; //A string to regroup the whole message as it's composed of Strings and Float --> to a single string,
 
 
   sim800l.print(Data_SMS);  //This string is sent as SMS
